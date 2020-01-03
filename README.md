@@ -1,5 +1,7 @@
-# SWExpertAcademy
+# Algorithm Practice
+
+## SWExpertAcademy
 [#]name.cpp 
 
-# acmicpc
+## acmicpc
 name_#.cpp
