@@ -7,7 +7,7 @@ using namespace std;
 
 int queue_front = 0;
 int queue_back = -1;
-int queue[MAX_QUEUE_SIZE] = { 0 };
+int queue[MAX_QUEUE_SIZE];
 int overflow_flag = 0;
 char push_cmd[] = "push";
 char pop_cmd[] = "pop";
@@ -27,6 +27,9 @@ int str_compare(char* src, char* dst, int length) {
 }
 
 int main() {
+    ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
 	int N, i, K;
 	char cmd[10];
 	cin >> N;
@@ -35,7 +38,7 @@ int main() {
 		if (str_compare(cmd, push_cmd, 4)) {
 			cin >> K;
 			if (queue_back - queue_front + 1 + overflow_flag * MAX_QUEUE_SIZE == MAX_QUEUE_SIZE) {
-				cout << "queue is full" << endl;
+				cout << "queue is full" << "\n";
 			}
 			else {
 				queue[++queue_back] = K;
@@ -48,10 +51,10 @@ int main() {
 		}
 		else if (str_compare(cmd, pop_cmd, 3)) {
 			if ((queue_back - queue_front < 0 && overflow_flag == 0)) {
-				cout << -1 << endl;
+				cout << "-1\n";
 			}
 			else {
-				cout << queue[queue_front++] << endl;
+				cout << queue[queue_front++] << "\n";
 				if (queue_front == MAX_QUEUE_SIZE) {
 					queue_front = 0;
 					overflow_flag--;
@@ -59,32 +62,32 @@ int main() {
 			}
 		}
 		else if (str_compare(cmd, size_cmd, 4)) {
-			cout << queue_back - queue_front + 1 + overflow_flag * MAX_QUEUE_SIZE << endl;
+			cout << queue_back - queue_front + 1 + overflow_flag * MAX_QUEUE_SIZE << "\n";
 		}
 		else if (str_compare(cmd, empty_cmd, 5)) {
-			cout << ((queue_back - queue_front + 1 + overflow_flag * MAX_QUEUE_SIZE > 0) ? (0) : (1)) << endl;
+			cout << ((queue_back - queue_front + 1 + overflow_flag * MAX_QUEUE_SIZE > 0) ? (0) : (1)) << "\n";
 		}
 		else if (str_compare(cmd, front_cmd, 5)) {
 			if (queue_back - queue_front + 1 + overflow_flag * MAX_QUEUE_SIZE > 0) {
-				cout << queue[queue_front] << endl;
+				cout << queue[queue_front] << "\n";
 			}
 			else {
-				cout << -1 << endl;
+				cout << "-1\n";
 			}
 		}
 		else if (str_compare(cmd, back_cmd, 4)) {
 			if (overflow_flag == 1 && queue_back == -1) {
-				cout << queue[LAST_INDEX] << endl;
+				cout << queue[LAST_INDEX] << "\n";
 			}
 			else if (queue_back - queue_front + 1 + overflow_flag * MAX_QUEUE_SIZE > 0) {
-				cout << queue[queue_back] << endl;
+				cout << queue[queue_back] << "\n";
 			}
 			else {
-				cout << -1 << endl;
+				cout << "-1\n";
 			}
 		}
 		else {
-			cout << "undefined command" << endl;
+			cout << "undefined command" << "\n";
 		}
 	}
 	return 0;
