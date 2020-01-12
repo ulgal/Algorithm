@@ -1,8 +1,8 @@
 #include<iostream>
-#define max_val_SIZE 100000
+#define MAX_VAL_SIZE 100000
 using namespace std;
 
-int arr[max_val_SIZE];
+int arr[MAX_VAL_SIZE];
 int N;
 int min_val, max_val;
 void percolateDown(int i, int n) {
